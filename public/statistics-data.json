@@ -1,0 +1,28 @@
+{
+  "stats": [
+    {
+      "month": "Jan",
+      "value": 251437000
+    },
+    {
+      "month": "Feb",
+      "value": 469456000
+    },
+    {
+      "month": "March",
+      "value": 754631000
+    },
+    {
+      "month": "April",
+      "value": 444912000
+    },
+    {
+      "month": "May",
+      "value": 159987000
+    },
+    {
+      "month": "June",
+      "value": 387547000
+    }
+  ]
+}
