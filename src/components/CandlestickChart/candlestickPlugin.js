@@ -1,6 +1,6 @@
 export const candlestickPlugin = {
   id: "custom_candlestick_plugin",
-  beforeDatasetsDraw: (chart, args, pluginOptions) => {
+  beforeDatasetsDraw: (chart) => {
     const {
       ctx,
       data,

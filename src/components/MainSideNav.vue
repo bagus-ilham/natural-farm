@@ -20,7 +20,7 @@
             </svg>
           </div>
         </router-link>
-        <router-link to="/reports" class="group">
+        <router-link to="/order" class="group">
           <div class="flex justify-center items-center w-10 h-10 lg:w-14 lg:h-14 text-white opacity-50 rounded-xl group-hover:bg-white group-hover:opacity-100 group-hover:text-blue-800 transform group-hover:-translate-y-8 group-hover:lg:-translate-y-0 group-hover:lg:translate-x-8 duration-500 group-hover:shadow-xl" :class="{ 'active-link': $route.path === '/reports' }">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -33,7 +33,7 @@
             </svg>
           </div>
         </router-link>
-        <router-link to="/messages" class="group">
+        <router-link to="/order" class="group">
           <div class="flex justify-center items-center w-10 h-10 lg:w-14 lg:h-14 text-white opacity-50 rounded-xl group-hover:bg-white group-hover:opacity-100 group-hover:text-blue-800 transform group-hover:-translate-y-8 group-hover:lg:-translate-y-0 group-hover:lg:translate-x-8 duration-500 group-hover:shadow-xl" :class="{ 'active-link': $route.path === '/messages' }">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -45,7 +45,7 @@
             </svg>
           </div>
         </router-link>
-        <router-link to="/payments" class="group">
+        <router-link to="/order" class="group">
           <div class="flex justify-center items-center w-10 h-10 lg:w-14 lg:h-14 text-white opacity-50 rounded-xl group-hover:bg-white group-hover:opacity-100 group-hover:text-blue-800 transform group-hover:-translate-y-8 group-hover:lg:-translate-y-0 group-hover:lg:translate-x-8 duration-500 group-hover:shadow-xl" :class="{ 'active-link': $route.path === '/payments' }">
             <svg
               xmlns="http://www.w3.org/2000/svg"

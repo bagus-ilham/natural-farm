@@ -1,92 +1,50 @@
 <template>
-    <v-container fluid>
-      <v-sheet class="pa-5" :elevation="1" border height="100%" width="100%">
-        <v-card title="Orders" flat>
-          <template v-slot:text>
-            <v-text-field
-              v-model="search"
-              label="Search"
-              prepend-inner-icon="mdi-magnify"
-              variant="outlined"
-              hide-details
-              single-line
-            ></v-text-field>
-            <v-btn
-              prepend-icon="mdi-plus"
-              class="my-5"
-              color="success"
-              variant="outlined"
-              @click="$router.push('/order/add')"
-              >Add Order</v-btn
-            >
-          </template>
-          <v-data-table :headers="headers" :items="orders" :search="search">
-            <template v-slot:item="{ item }">
-              <tr>
-                <td>{{ item.customer.customer_name }}</td>
-                <td>{{ item.payment.name }}</td>
-                <td>{{ formatCurrency(item.totalDiscount) }}</td>
-                <td>{{ formatCurrency(item.totalPrice) }}</td>
-              </tr>
-            </template>
-          </v-data-table>
-        </v-card>
-      </v-sheet>
-      <v-snackbar v-model="snackbar" :timeout="2000" color="success">
-        Success Adding Data
-      </v-snackbar>
-    </v-container>
-  </template>
-  
-  <script>
-  import orderStore from '../services/orderStore';
-  import utilsStore from '../services/utilsStore';
-  
-  export default {
-    data() {
-      return {
-        search: '',
-        headers: [
-          {
-            align: 'start',
-            key: 'customer.customer_name',
-            sortable: false,
-            title: 'Customer',
-          },
-          { key: 'payment.name', title: 'Payment' },
-          { key: 'totalDiscount', title: 'Total Discount' },
-          { key: 'totalPrice', title: 'Total Price' },
-        ],
-      };
-    },
-    computed: {
-      orders() {
-        return orderStore.getOrders();
-      },
-      snackbar() {
-        return utilsStore.getSnackbar();
-      },
-    },
-    mounted() {
-      this.fetchData();
-    },
-    methods: {
-      async fetchData() {
-        try {
-          this.orders = await fetchOrders();
-        } catch (error) {
-          console.error('Error fetching data:', error);
-        }
-      },
-      formatCurrency(amount) {
-        const formatter = new Intl.NumberFormat('id-ID', {
-          style: 'currency',
-          currency: 'IDR',
-        });
-        return formatter.format(amount);
-      },
-    },
-  };
-  </script>
-  
-  <style scoped></style>
+  <div class="container mx-auto">
+    <div class="p-5 bg-white shadow-md">
+      <div class="flex justify-between mb-5">
+        <div></div>
+        <button @click="$router.push('/order/add')" class="py-2 px-4 bg-green-500 text-white rounded hover:bg-green-600 justify-end">Add Order</button>
+      </div>
+      <table class="w-full">
+        <thead>
+          <tr>
+            <th class="text-left">Customer</th>
+            <th class="text-left">Payment</th>
+            <th class="text-left">Total Discount</th>
+            <th class="text-left">Total Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item, index) in orders" :key="index">
+            <td>{{ item.customer.customer_name }}</td>
+            <td>{{ item.payment.name }}</td>
+            <td>{{ formatCurrency(item.totalDiscount) }}</td>
+            <td>{{ formatCurrency(item.totalPrice) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div v-if="snackbar" class="fixed bottom-0 right-0 m-5 p-3 bg-green-500 text-white rounded shadow">
+      Success Adding Data
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, computed } from "vue";
+import orderStore from "../services/orderStore";
+
+const orders = computed(() => orderStore.getOrders());
+const snackbar = ref(false);
+
+const formatCurrency = (amount) => {
+  const formatter = new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+  });
+
+  return formatter.format(amount);
+};
+</script>
+
+<style scoped></style>

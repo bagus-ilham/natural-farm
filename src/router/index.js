@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
 import Order from "../views/Order.vue";
 import Add from "../views/Add.vue";
@@ -10,17 +10,17 @@ const routes = [
     component: Home,
   },
   {
-    path: "/reports",
+    path: "/order",
     name: "Reports",
     component: Order,
   },
   {
-    path: "/messages",
+    path: "/order",
     name: "Messages",
     component: Order,
   },
   {
-    path: "/payments",
+    path: "/order",
     name: "Payments",
     component: Order,
   },
@@ -32,7 +32,7 @@ const routes = [
 ];
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes,
 });
 

@@ -11,7 +11,7 @@
         <TopNav />
       </header>
       <!-- Router-View -->
-      <div id="view-wrapper" class="w-full h-full">
+      <div id="view-wrapper" class="w-full h-screen">
         <router-view />
       </div>
     </main>

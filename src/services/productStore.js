@@ -1,23 +1,29 @@
-import paymentData from '../data/payment.json';
+import productJson from "../data/product.json";
 
-const paymentStore = {
-  state: {
-    payments: paymentData,
-  },
-  getPayments() {
-    return this.state.payments;
-  },
-  addPayment(payment) {
-    this.state.payments.push(payment);
-  },
-  removePayment(payment) {
-    const index = this.state.payments.indexOf(payment);
-    this.state.payments.splice(index, 1);
-  },
-  updatePayment(payment) {
-    const index = this.state.payments.indexOf(payment);
-    this.state.payments.splice(index, 1, payment);
-  },
-};
 
-export default paymentStore;
+export const productStore = {
+  state: () => ({
+    products: productJson
+  }),
+  getters: {
+    getProduct: (state) => state.products,
+  },
+  actions: {
+    addProduct(product){
+      this.products.push(product);
+    },
+    removeProduct(product){
+      this.products.splice(this.products.indexOf(product), 1);
+    },
+    updateProduct(product){
+      const index = this.products.indexOf(product);
+      this.products.splice(index, 1, product);
+    },
+    decreaseStockProduct(id){
+      const index = this.products.findIndex((product) => product.id === id);
+      this.products[index].stock--;
+    },
+  },
+}
+
+export default productStore;
